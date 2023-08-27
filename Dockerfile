@@ -7,8 +7,8 @@ RUN go build -o launcher
 FROM debian:stable-slim
 LABEL maintainer="Dario Ragusa"
 
-ENV UID 0
-ENV GUI 0
+ENV UID 99
+ENV GID 100
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
