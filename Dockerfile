@@ -7,8 +7,8 @@ RUN go build -o launcher
 FROM debian:stable-slim
 LABEL maintainer="Dario Ragusa"
 
-ENV UID 99
-ENV GID 100
+ENV UID 0
+ENV GID 0
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
@@ -32,8 +32,9 @@ RUN wget -O - https://github.com/novnc/websockify/archive/refs/tags/v0.11.0.tar.
 WORKDIR /app
 
 # https://github.com/irwir/eMule
-RUN wget https://github.com/irwir/eMule/releases/download/eMule_v0.70a-community/emule0.70a_x64_beta.zip -O /tmp/emule.zip && \
-    unzip /tmp/emule.zip -d /tmp/eMule0.70a/ && mv /tmp/eMule0.70a/* /app
+RUN wget https://github.com/irwir/eMule/releases/download/eMule_v0.60d-community/eMule0.60d.zip -O /tmp/emule.zip && \
+    unzip /tmp/emule.zip -d /tmp/eMule0.60d/ && mv /tmp/eMule0.60d/* /app
+    
     
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY scripts /app
